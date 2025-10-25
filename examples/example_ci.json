@@ -1,0 +1,29 @@
+{
+  "ci_id": "CI-1729876548901",
+  "po_id": "PO-1729876543210",
+  "created_at": "2025-10-25T12:35:48.901Z",
+  "seller": {
+    "name": "Jupiter Knitting",
+    "lei": "5493001XJUPITER0001",
+    "account": "GSELLER_ACCOUNT_EXAMPLE_1234567890ABCDEFGHIJKLMNOPQ"
+  },
+  "buyer": {
+    "name": "Tommy Hilfiger",
+    "lei": "5493001KJTIIGC8Y1R12",
+    "account": "GBUYER_ACCOUNT_EXAMPLE_1234567890ABCDEFGHIJKLMNOPQR"
+  },
+  "line_items": [
+    {
+      "description": "Men's T-shirts with South Indian Cultural Heritage Design made from Non Synthetic dye",
+      "quantity": 100000,
+      "unit_price_usd": 9,
+      "total_usd": 900000
+    }
+  ],
+  "total_usd": 900000,
+  "total_xlm": "1800000.0000000",
+  "payment_terms": "Net 30",
+  "status": "issued",
+  "signature_seller": "aGFzaGVkX3NpZ25hdHVyZV9ieV9zZWxsZXI="
+}
+

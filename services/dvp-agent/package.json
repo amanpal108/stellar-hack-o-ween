@@ -1,0 +1,14 @@
+{
+  "name": "dvp-agent",
+  "version": "1.0.0",
+  "description": "DvP agent - verifies delivery vs payment matching across documents",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}
+

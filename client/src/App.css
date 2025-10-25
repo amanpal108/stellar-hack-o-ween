@@ -1,0 +1,280 @@
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  color: white;
+  padding: 20px 20px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2em;
+  margin-bottom: 5px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  font-size: 0.9em;
+  opacity: 0.6;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.visualization-section {
+  margin-bottom: 15px;
+}
+
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 15px;
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 4px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.toggle-btn {
+  padding: 8px 20px;
+  font-size: 0.85em;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.toggle-btn.active {
+  background: #3b82f6;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.card h3 {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-top: 0;
+}
+
+/* Prompt section */
+.prompt-section {
+  margin-bottom: 0;
+}
+
+textarea.prompt-input {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  font-size: 0.9em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.6);
+  color: white;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+textarea.prompt-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.start-button {
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: white;
+  background: #3b82f6;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.start-button:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.start-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Current stage */
+.current-stage {
+  padding: 12px;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #93c5fd;
+  font-weight: 500;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Error card */
+.error-card {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  padding: 15px;
+  color: #fca5a5;
+  margin-bottom: 15px;
+}
+
+/* Seller card */
+.seller-card {
+  margin-top: 15px;
+}
+
+.seller-info p {
+  margin: 6px 0;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.seller-info strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Timeline */
+.timeline-item {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item:last-child {
+  border-bottom: none;
+}
+
+.timeline-stage {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9em;
+}
+
+.timeline-status {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.timeline-status.completed {
+  background: rgba(72, 187, 120, 0.2);
+  color: #68d391;
+}
+
+.timeline-status.in-progress {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
+
+.timeline-status.failed {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.timeline-details {
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+}
+
+/* Transactions */
+.transaction-item {
+  padding: 10px;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 0.85em;
+}
+
+.transaction-type {
+  font-weight: 600;
+  color: #a5b4fc;
+  margin-bottom: 4px;
+}
+
+.transaction-item a {
+  color: #818cf8;
+  text-decoration: none;
+  word-break: break-all;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.transaction-item a:hover {
+  color: #c4b5fd;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.5em;
+  }
+  
+  .card {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "ci_id": "CI-1761356553044",
+  "po_id": "PO-1761356551226",
+  "created_at": "2025-10-25T01:42:33.044Z",
+  "seller": {
+    "name": "Jupiter Knitting",
+    "lei": "5493001XJUPITER0001",
+    "account": "GDjupiterknitting_MOCK_ACCOUNT_000000000000000000"
+  },
+  "buyer": {
+    "name": "Tommy Hilfiger",
+    "lei": "5493001KJTIIGC8Y1R12",
+    "account": "GBUYER_DEMO"
+  },
+  "line_items": [
+    {
+      "description": "1000 Men's T-shirts",
+      "quantity": 1000,
+      "unit_price_usd": 9,
+      "total_usd": 9000
+    }
+  ],
+  "total_usd": 9000,
+  "total_xlm": "18000.0000000",
+  "payment_terms": "Net 30",
+  "status": "issued",
+  "signature_seller": "hXTmsBI9bs0IQeKpWOLNRIxTkwGrG5EcN24aLKD6guQ="
+}

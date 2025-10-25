@@ -1,0 +1,43 @@
+{
+  "5493001KJTIIGC8Y1R12": {
+    "lei": "5493001KJTIIGC8Y1R12",
+    "entity_name": "Tommy Hilfiger Corporation",
+    "status": "ISSUED",
+    "verified": true,
+    "issued_at": "2024-01-15T10:00:00Z",
+    "expires_at": "2026-01-15T10:00:00Z",
+    "issuer": "GLEIF",
+    "credential_type": "vLEI"
+  },
+  "5493001XJUPITER0001": {
+    "lei": "5493001XJUPITER0001",
+    "entity_name": "Jupiter Knitting Mills Pvt Ltd",
+    "status": "ISSUED",
+    "verified": true,
+    "issued_at": "2024-03-20T08:30:00Z",
+    "expires_at": "2026-03-20T08:30:00Z",
+    "issuer": "GLEIF",
+    "credential_type": "vLEI"
+  },
+  "5493001XGUJARAT0002": {
+    "lei": "5493001XGUJARAT0002",
+    "entity_name": "Gujarat Textiles Limited",
+    "status": "ISSUED",
+    "verified": true,
+    "issued_at": "2024-02-10T12:00:00Z",
+    "expires_at": "2026-02-10T12:00:00Z",
+    "issuer": "GLEIF",
+    "credential_type": "vLEI"
+  },
+  "5493001XMUMBAI00003": {
+    "lei": "5493001XMUMBAI00003",
+    "entity_name": "Mumbai Basics Trading Co",
+    "status": "ISSUED",
+    "verified": true,
+    "issued_at": "2024-04-05T14:20:00Z",
+    "expires_at": "2026-04-05T14:20:00Z",
+    "issuer": "GLEIF",
+    "credential_type": "vLEI"
+  }
+}
+

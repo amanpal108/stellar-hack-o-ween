@@ -1,0 +1,48 @@
+[
+  {
+    "agentID": "agent:jn-001",
+    "name": "Jupiter Knitting",
+    "lei": "5493001XJUPITER0001",
+    "stellar_account": "GBPFMDZ5VNL56YNMXOQ35RUFRS3S6LZN66SB2OYOQXHK3X46UGTBJBBP",
+    "description": "vLEI verified textile seller that can fulfill South Indian cultural heritage designs with Non synthetic natural dyes within 30 days",
+    "keywords": ["textile", "t-shirts", "south indian", "cultural heritage", "non synthetic dye", "natural dyes", "cotton"],
+    "capabilities": {
+      "min_quantity": 10000,
+      "max_quantity": 500000,
+      "lead_time_days": 30,
+      "specialties": ["cultural designs", "natural dyes", "bulk orders"]
+    },
+    "endpoint": "http://localhost:3004"
+  },
+  {
+    "agentID": "agent:gt-002",
+    "name": "Gujarat Textiles",
+    "lei": "5493001XGUJARAT0002",
+    "stellar_account": "GBPFMDZ5VNL56YNMXOQ35RUFRS3S6LZN66SB2OYOQXHK3X46UGTBJBBP",
+    "description": "Large scale textile manufacturer specializing in traditional Indian designs with eco-friendly production",
+    "keywords": ["textile", "traditional", "indian designs", "eco-friendly", "bulk production"],
+    "capabilities": {
+      "min_quantity": 50000,
+      "max_quantity": 1000000,
+      "lead_time_days": 45,
+      "specialties": ["traditional designs", "eco-friendly", "large scale"]
+    },
+    "endpoint": "http://localhost:3004"
+  },
+  {
+    "agentID": "agent:mb-003",
+    "name": "Mumbai Basics",
+    "lei": "5493001XMUMBAI00003",
+    "stellar_account": "GBPFMDZ5VNL56YNMXOQ35RUFRS3S6LZN66SB2OYOQXHK3X46UGTBJBBP",
+    "description": "Budget textile supplier for basic apparel with standard synthetic and cotton options",
+    "keywords": ["textile", "basic", "cotton", "synthetic", "budget", "apparel"],
+    "capabilities": {
+      "min_quantity": 5000,
+      "max_quantity": 200000,
+      "lead_time_days": 20,
+      "specialties": ["budget pricing", "quick turnaround", "basic designs"]
+    },
+    "endpoint": "http://localhost:3004"
+  }
+]
+
