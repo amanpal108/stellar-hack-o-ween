@@ -540,6 +540,24 @@ Built for the Stellar Hackathon 2025 🌟
 
 ---
 
+---
+
+## 🎥 Demo
+
+Check out the live demo video here: [Watch Demo]([https://www.youtube.com/watch?v=YOUR_VIDEO_ID](https://www.loom.com/share/a14cceb9357a4d3a98b06d53c70d81af))
+
+
+---
+
+---
+
+## 👥 Pick deck 
+
+Link: https://www.canva.com/design/DAG25s_Eoew/DJ0hLZFnydk2cyvsClOb1Q/view?utm_content=DAG25s_Eoew&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h38a4c7d4cc
+Appendix: [https://www.canva.com/design/DAG25s_Eoew/HZPgNG93UaL0WON77F-MkQ/edit](https://northeastern-my.sharepoint.com/:p:/r/personal/gupta_pankh_northeastern_edu/_layouts/15/Doc.aspx?sourcedoc=%7BB97793CD-3ED3-4116-ABDA-90BCF61FCF51%7D&file=StellarIntegraV2%201.pptx&action=edit&mobileredirect=true&DefaultItemOpen=1&wdOrigin=APPHOME-WEB.DIRECT%2CAPPHOME-WEB.JUMPBACKIN&wdPreviousSession=d2e5ed13-9fb8-49f5-8111-f5d2c7746bf0&wdPreviousSessionSrc=AppHomeWeb&ct=1761495921566)
+
+---
+
 ## 🔗 Quick Links
 
 - [Stellar Testnet Explorer](https://stellar.expert/explorer/testnet)
