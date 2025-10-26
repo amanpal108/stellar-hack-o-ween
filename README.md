@@ -39,7 +39,14 @@ https://www.youtube.com/watch?v=OS88ioujfqw
 https://vlei.com/
 https://www.gleif.org/en/lei-solutions/better-knowledge-better-business
 
+### Short Presentation ( CANVA link )
 
+https://www.canva.com/design/DAG25s_Eoew/DJ0hLZFnydk2cyvsClOb1Q/view?utm_content=DAG25s_Eoew&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h38a4c7d4cc
+
+
+### Long Presentation
+
+[StellarIntegraV2.pptx](https://github.com/user-attachments/files/23151149/StellarIntegraV2.pptx)
 
 
 
