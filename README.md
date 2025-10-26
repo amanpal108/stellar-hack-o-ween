@@ -31,6 +31,21 @@ Buyer Prompt → Search Sellers → Validate vLEI → Generate PO (→ Stellar)
   → Fulfill Order (CI + WR → Stellar) → DvP Verification → Payment Release (→ Stellar)
 ```
 
+### Anchor customer Testimonial on the POC this weekend on the need for verifiable partners, and efficient settlement for cash. 
+https://www.youtube.com/watch?v=OS88ioujfqw
+
+### GLEIF and vLEI Reseources
+
+https://vlei.com/
+https://www.gleif.org/en/lei-solutions/better-knowledge-better-business
+
+
+
+
+
+https://github.com/amanpal108/stellar-hack-o-ween/blob/main/README.md
+
+
 ### Key Features
 
 - ✅ **Biometric Passkey Login**: One-click wallet setup with automatic funding (NEW!)
