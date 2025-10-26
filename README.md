@@ -14,6 +14,11 @@ A hackathon-ready MVP demonstrating an automated trade flow orchestrated by inte
 - 🎨 **Beautiful UI**: Modern gradient design with real-time progress tracking
 - 🔒 **Secure Keys**: Local key generation with session-based management
 
+## Unique positions 
+
+- Agentic guardrails with Agents actually traceable for Legal Entity Accountabiltiy , and Trading Partner Legal Verification. Our team members are short-listed by GLEIF for working relationships.
+- Gels with where the real world problems are ( 3 - way industry matching dvP agents for Purchase Order to Customer Invoice to Receipts  matching ), to increase the overall efficiency in the Cross Border trade and settlement. 
+
 **No more manual scripts!** Just click "Setup Account with Biometric" and you're ready to trade.
 
 👉 **See [PASSKEY_LOGIN_GUIDE.md](./PASSKEY_LOGIN_GUIDE.md) for detailed documentation**
