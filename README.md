@@ -544,7 +544,7 @@ Built for the Stellar Hackathon 2025 🌟
 
 ## 🎥 Demo
 
-Check out the live demo video here: [Watch Demo]([https://www.youtube.com/watch?v=YOUR_VIDEO_ID](https://www.loom.com/share/a14cceb9357a4d3a98b06d53c70d81af))
+Check out the live demo video here: [Watch Demo]((https://www.loom.com/share/a14cceb9357a4d3a98b06d53c70d81af))
 
 
 ---
