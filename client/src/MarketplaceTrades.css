@@ -1,0 +1,356 @@
+.marketplace-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.marketplace-header {
+  margin-bottom: 30px;
+}
+
+.marketplace-header h1 {
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 12px 0;
+  font-size: 2.4em;
+  font-weight: 800;
+  font-family: 'Madefor Text', sans-serif;
+  letter-spacing: -0.8px;
+}
+
+.marketplace-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 25px 0;
+  font-size: 1.1em;
+  font-family: 'Madefor Text', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.stat {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.stat-value.success {
+  color: #68d391;
+}
+
+.stat-value.error {
+  color: #f87171;
+}
+
+.stat-value.pending {
+  color: #fbbf24;
+}
+
+/* Trades List */
+.trades-list {
+  display: grid;
+  gap: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.empty-icon {
+  font-size: 4em;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 10px 0;
+  font-size: 1.5em;
+}
+
+.empty-state p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1em;
+}
+
+/* Trade Cards */
+.trade-card {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.trade-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.trade-card.completed::before {
+  background: linear-gradient(90deg, #10b981, #34d399);
+  opacity: 1;
+}
+
+.trade-card.failed::before {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+  opacity: 1;
+}
+
+.trade-card.in-progress::before {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  opacity: 1;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.trade-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.trade-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.trade-id {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trade-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.trade-value {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.2em;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.status-badge.success {
+  background: rgba(16, 185, 129, 0.15);
+  color: #68d391;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-badge.error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.status-badge.pending {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* Trade Card Body */
+.trade-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.trade-parties {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 8px;
+}
+
+.party {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.party-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75em;
+  text-transform: uppercase;
+}
+
+.party-name {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.arrow {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.5em;
+}
+
+.trade-details-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.detail-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9em;
+}
+
+.detail-value {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.detail-value.highlight {
+  color: #60a5fa;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+/* Trade Card Footer */
+.trade-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.trade-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.date-icon {
+  opacity: 0.7;
+}
+
+.transaction-count {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.9em;
+}
+
+.click-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8em;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.trade-card:hover .click-hint {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stat {
+    padding: 15px;
+  }
+  
+  .stat-value {
+    font-size: 1.6em;
+  }
+
+  .trade-parties {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+
+  .marketplace-header h1 {
+    font-size: 1.8em;
+  }
+}
+

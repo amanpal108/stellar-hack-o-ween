@@ -16,7 +16,7 @@ describe('Buyer Agent', () => {
   test('should parse purchase prompt correctly', async () => {
     const response = await axios.post(`${SERVICES.buyer}/start`, {
       buyer_name: 'Test Buyer',
-      buyer_lei: '5493001KJTIIGC8Y1R12',
+      buyer_lei: '54930012QJWZMYHNJW95',
       buyer_account: 'GTEST',
       prompt_text: "Looking for 100,000 Men's T-shirts with South Indian Cultural Heritage Design made from Non Synthetic dye. Offer: 9 USD per t-shirt. Delivery: by 2025-11-30."
     });
@@ -63,8 +63,8 @@ describe('Search Agent', () => {
 describe('Validation Agent', () => {
   test('should validate known LEIs', async () => {
     const response = await axios.post(`${SERVICES.validation}/validate`, {
-      buyer_lei: '5493001KJTIIGC8Y1R12',
-      seller_lei: '5493001XJUPITER0001'
+      buyer_lei: '54930012QJWZMYHNJW95',
+      seller_lei: '3358004DXAMRWRUIYJ05'
     });
 
     expect(response.data.valid).toBe(true);
@@ -77,7 +77,7 @@ describe('Validation Agent', () => {
   test('should reject unknown LEIs', async () => {
     const response = await axios.post(`${SERVICES.validation}/validate`, {
       buyer_lei: 'UNKNOWN_LEI_12345',
-      seller_lei: '5493001XJUPITER0001'
+      seller_lei: '3358004DXAMRWRUIYJ05'
     });
 
     expect(response.data.valid).toBe(false);

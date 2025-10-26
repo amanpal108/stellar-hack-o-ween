@@ -1,0 +1,39 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://keri.one/credentials/v1"
+  ],
+  "type": [
+    "VerifiableCredential",
+    "AgentIdentity"
+  ],
+  "issuer": {
+    "id": "validation-agent-1761484142337",
+    "name": "Stellar Integra Validation Agent"
+  },
+  "issuanceDate": "2025-10-26T13:09:02.339Z",
+  "credentialSubject": {
+    "id": "validation-agent-1761484142337",
+    "type": "ValidationAgent",
+    "name": "Stellar Integra Validation Agent",
+    "description": "KERI-based validation agent for vLEI and agent verification",
+    "capabilities": [
+      "vlei-verification",
+      "agent-verification",
+      "credential-issuance",
+      "credential-verification"
+    ],
+    "publicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAh0JopXH4WhLe9+gwYuhkPSGJeaFtx59P/zkePQRVVpg=\n-----END PUBLIC KEY-----\n",
+    "endpoints": {
+      "http": "http://localhost:3003",
+      "keri": "http://localhost:3003/keri"
+    }
+  },
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2025-10-26T13:09:02.339Z",
+    "verificationMethod": "validation-agent-1761484142337#key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "PLACEHOLDER_SIGNATURE"
+  }
+}

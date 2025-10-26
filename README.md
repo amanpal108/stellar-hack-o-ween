@@ -1,8 +1,22 @@
-# 🌟 Stellar Trade Flow MVP
+# 🌟 Stellar Integra MVP
 
 **Agent-driven buyer→seller trade flow with REAL Stellar Testnet transactions**
 
 A hackathon-ready MVP demonstrating an automated trade flow orchestrated by intelligent agents, with **real XLM payments** and immutable document posting on Stellar Testnet. Every transaction is verifiable on-chain.
+
+## 🔐 NEW: Biometric Login with Passkey-Kit
+
+**One-Click Wallet Setup!** This project now features a beautiful biometric login system powered by Stellar's passkey-kit:
+
+- 🔐 **Biometric Authentication**: Secure device-level authentication (simulated for testnet)
+- ⚡ **Instant Setup**: All 3 wallets (Buyer, Seller, Escrow) created and funded in ~15 seconds
+- 💰 **Auto-Funding**: Each wallet automatically receives 10,000 XLM from Friendbot
+- 🎨 **Beautiful UI**: Modern gradient design with real-time progress tracking
+- 🔒 **Secure Keys**: Local key generation with session-based management
+
+**No more manual scripts!** Just click "Setup Account with Biometric" and you're ready to trade.
+
+👉 **See [PASSKEY_LOGIN_GUIDE.md](./PASSKEY_LOGIN_GUIDE.md) for detailed documentation**
 
 ---
 
@@ -19,6 +33,7 @@ Buyer Prompt → Search Sellers → Validate vLEI → Generate PO (→ Stellar)
 
 ### Key Features
 
+- ✅ **Biometric Passkey Login**: One-click wallet setup with automatic funding (NEW!)
 - ✅ **7 Microservices**: Modular agent architecture with Express APIs
 - ✅ **REAL Stellar Testnet Integration**: Live blockchain transactions with funded accounts
   - Real manageData operations for PO, CI, and WR documents
@@ -30,7 +45,7 @@ Buyer Prompt → Search Sellers → Validate vLEI → Generate PO (→ Stellar)
   - **Full Payload Display**: See complete request/response bodies including keypairs and transaction data
 - ✅ **vLEI Validation**: Entity verification using Legal Entity Identifiers
 - ✅ **DvP Matching**: Delivery vs Payment verification before settlement
-- ✅ **React Frontend**: Minimal dark-themed UI with real-time progress and transaction links
+- ✅ **React Frontend**: Beautiful gradient UI with biometric authentication
 - ✅ **End-to-End Demo**: Complete automation from prompt to on-chain payment in ~20 seconds
 - ✅ **Jest Tests**: Unit and integration tests
 
@@ -78,7 +93,7 @@ stellar-hackathon/
 ```bash
 # Clone the repository
 git clone <your-repo-url>
-cd stellar-hackathon
+cd stellar-hack-o-ween
 
 # Install all dependencies
 npm install
@@ -247,7 +262,7 @@ made from Non Synthetic dye. Offer: 9 USD per t-shirt. Delivery: by 2025-11-30.
 {
   "agentID": "agent:jn-001",
   "name": "Jupiter Knitting",
-  "lei": "5493001XJUPITER0001",
+  "lei": "3358004DXAMRWRUIYJ05",
   "description": "vLEI verified textile seller that can fulfill South Indian cultural heritage designs with Non synthetic natural dyes within 30 days",
   "confidence": 0.92
 }
@@ -368,12 +383,12 @@ See `VISUALIZATION_GUIDE.md` for detailed documentation.
   "created_at": "2025-10-25T12:00:00Z",
   "buyer": {
     "name": "Tommy Hilfiger",
-    "lei": "5493001KJTIIGC8Y1R12",
+    "lei": "54930012QJWZMYHNJW95",
     "account": "GXXXXX..."
   },
   "seller": {
     "name": "Jupiter Knitting",
-    "lei": "5493001XJUPITER0001",
+    "lei": "3358004DXAMRWRUIYJ05",
     "account": "GDXXXXX..."
   },
   "line_items": [

@@ -1,4 +1,4 @@
-# Stellar Trade Flow - Frontend
+# Stellar Integra - Frontend
 
 ## Overview
 React-based frontend that provides an interactive UI for the agent-driven trade flow.

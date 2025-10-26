@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import './AgentNetworkGraph.css';
 
 const AGENTS = [
-  { id: 'buyer', name: 'Buyer', icon: '🤵', x: 50, y: 30 },
-  { id: 'search', name: 'Search', icon: '🔍', x: 25, y: 50 },
-  { id: 'validation', name: 'Validation', icon: '🔐', x: 75, y: 50 },
-  { id: 'po', name: 'PO', icon: '📝', x: 35, y: 70 },
-  { id: 'fulfillment', name: 'Fulfillment', icon: '📦', x: 65, y: 70 },
-  { id: 'dvp', name: 'DvP', icon: '⚖️', x: 50, y: 85 },
-  { id: 'payment', name: 'Payment', icon: '💰', x: 50, y: 100 }
+  { id: 'buyer', name: 'Buyer', icon: '🤵', x: 50, y: 12 },
+  { id: 'search', name: 'Search', icon: '🔍', x: 25, y: 30 },
+  { id: 'validation', name: 'Validation', icon: '🔐', x: 75, y: 30 },
+  { id: 'po', name: 'PO', icon: '📝', x: 35, y: 48 },
+  { id: 'fulfillment', name: 'Fulfillment', icon: '📦', x: 65, y: 48 },
+  { id: 'dvp', name: 'DvP', icon: '⚖️', x: 50, y: 66 },
+  { id: 'payment', name: 'Payment', icon: '💰', x: 50, y: 88 }
 ];
 
 const CONNECTIONS = [

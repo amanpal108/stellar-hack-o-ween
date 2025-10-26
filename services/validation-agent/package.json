@@ -1,14 +1,25 @@
 {
   "name": "validation-agent",
   "version": "1.0.0",
-  "description": "Validation agent - validates vLEI credentials for trading parties",
+  "description": "KERI-based validation agent for vLEI credentials and agent-to-agent verification",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "keri:init": "node scripts/init-keri-agent.js",
+    "keri:status": "node scripts/check-keri-status.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "signify-ts": "^0.3.0-rc2",
+    "cesr": "^0.0.16",
+    "axios": "^1.6.0",
+    "uuid": "^9.0.1",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
 

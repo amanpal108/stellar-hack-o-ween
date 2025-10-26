@@ -1,0 +1,22 @@
+{
+  "agentId": "validation-agent-1761484142337",
+  "version": "1.0.0",
+  "created": "2025-10-26T13:09:02.337Z",
+  "network": "testnet",
+  "endpoints": {
+    "http": "http://localhost:3003",
+    "keri": "http://localhost:3003/keri"
+  },
+  "capabilities": [
+    "vlei-verification",
+    "agent-verification",
+    "credential-issuance",
+    "credential-verification"
+  ],
+  "supportedCredentials": [
+    "vLEI",
+    "AgentIdentity",
+    "TradingAuthorization",
+    "ComplianceCertificate"
+  ]
+}

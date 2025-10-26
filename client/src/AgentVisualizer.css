@@ -233,14 +233,14 @@
   }
 }
 
-/* Data packet animation */
+/* Data packet animation - DISABLED */
 .data-packet {
   position: absolute;
-  left: 0;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   font-size: 1.5em;
-  animation: packetMove 1.5s ease-in-out forwards;
+  /* animation: packetMove 1.5s ease-in-out forwards; */
   filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.8));
 }
 

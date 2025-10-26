@@ -29,7 +29,7 @@ describe('End-to-End Trade Flow', () => {
   test('Step 1: Buyer initiates purchase request', async () => {
     const response = await axios.post(`${SERVICES.buyer}/start`, {
       buyer_name: 'Tommy Hilfiger',
-      buyer_lei: '5493001KJTIIGC8Y1R12',
+      buyer_lei: '54930012QJWZMYHNJW95',
       buyer_account: 'GBUYER_TEST',
       prompt_text: "Looking for 100,000 Men's T-shirts with South Indian Cultural Heritage Design made from Non Synthetic dye. Offer: 9 USD per t-shirt. Delivery: by 2025-11-30."
     });
@@ -58,13 +58,13 @@ describe('End-to-End Trade Flow', () => {
 
     selectedSeller = response.data[0];
     expect(selectedSeller.name).toBe('Jupiter Knitting');
-    expect(selectedSeller.lei).toBe('5493001XJUPITER0001');
+    expect(selectedSeller.lei).toBe('3358004DXAMRWRUIYJ05');
     expect(selectedSeller.confidence).toBeGreaterThan(0.8);
   });
 
   test('Step 3: Validation agent verifies both parties', async () => {
     const response = await axios.post(`${SERVICES.validation}/validate`, {
-      buyer_lei: '5493001KJTIIGC8Y1R12',
+      buyer_lei: '54930012QJWZMYHNJW95',
       seller_lei: selectedSeller.lei
     });
 
@@ -80,7 +80,7 @@ describe('End-to-End Trade Flow', () => {
     const response = await axios.post(`${SERVICES.po}/generate`, {
       buyer: {
         name: 'Tommy Hilfiger',
-        lei: '5493001KJTIIGC8Y1R12',
+        lei: '54930012QJWZMYHNJW95',
         account: 'GBUYER_TEST'
       },
       seller: {
@@ -108,7 +108,7 @@ describe('End-to-End Trade Flow', () => {
     
     expect(poData.po.total_usd).toBe(900000);
     expect(poData.po.status).toBe('issued');
-    expect(poData.po.buyer.lei).toBe('5493001KJTIIGC8Y1R12');
+    expect(poData.po.buyer.lei).toBe('54930012QJWZMYHNJW95');
     expect(poData.po.seller.lei).toBe(selectedSeller.lei);
   });
 

@@ -1,0 +1,32 @@
+{
+  "po_id": "PO-1761488335731",
+  "created_at": "2025-10-26T14:18:55.731Z",
+  "buyer": {
+    "name": "Tommy Hilfiger (Buyer)",
+    "lei": "54930012QJWZMYHNJW95",
+    "account": "GDME6PVIVTZGS7KX43HYNWSUM7S54RFPG2ZAD6UF6W32TFH7HY6TFYZN"
+  },
+  "seller": {
+    "name": "RMKV SILKS PRIVATE LIMITED",
+    "lei": "335800MY8BXDZWV9C327",
+    "account": "GA6GLXJ2IH3MDIZDUPS7EE67BWMI6CQJ6W37RQMUTTN56FUGX2VOWT4E"
+  },
+  "line_items": [
+    {
+      "description": "1,000 Women's Silk Sarees",
+      "quantity": 1000,
+      "unit_price_usd": 9,
+      "total_usd": 9000
+    }
+  ],
+  "total_usd": 9000,
+  "total_xlm": "18000.0000000",
+  "xlm_rate": 0.5,
+  "delivery_date": "2025-12-15",
+  "requirements": [
+    "south indian design"
+  ],
+  "status": "issued",
+  "signature_buyer": "3Cm09dvyFXo/9msbxrLydTXk3dZ//hnuxAJyOG23AWg=",
+  "signature_seller": "iPocmagUEHIfYZ1iMiuEemRTom7w8CIW99ZpoOVPw2I="
+}

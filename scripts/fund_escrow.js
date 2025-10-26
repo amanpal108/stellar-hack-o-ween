@@ -1,6 +1,23 @@
 #!/usr/bin/env node
 
 /**
+ * ⚠️  DEPRECATED - This script is no longer needed!
+ * 
+ * The application now uses the Passkey Login system which automatically
+ * creates and funds all wallets (including escrow) through the UI.
+ * 
+ * To use the new system:
+ * 1. Start the app: npm run start:all && cd client && npm start
+ * 2. Click "Setup Account with Biometric" in the UI
+ * 3. All 3 wallets (buyer, seller, escrow) are funded with 10,000 XLM each!
+ * 
+ * See PASSKEY_LOGIN_GUIDE.md for more details.
+ * 
+ * This script is kept for reference only.
+ * 
+ * ---
+ * 
+ * OLD FUNCTIONALITY (still works if needed):
  * Funds the escrow account using Stellar Friendbot
  * Also funds buyer and seller accounts for testing
  */

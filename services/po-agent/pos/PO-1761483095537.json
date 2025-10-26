@@ -1,0 +1,34 @@
+{
+  "po_id": "PO-1761483095537",
+  "created_at": "2025-10-26T12:51:35.537Z",
+  "buyer": {
+    "name": "Tommy Hilfiger (Buyer)",
+    "lei": "5493001KJTIIGC8Y1R12",
+    "account": "GCCCVA6LYXYVC7HQZ6Q7TOY5YFZO73IBVC5WQGFKNA4YE34ZWXFDLC5F"
+  },
+  "seller": {
+    "name": "Jupiter Knitting",
+    "lei": "5493001XJUPITER0001",
+    "account": "GBBKCM4H2KXPV4PYVJDAQU3HZORLVONRE3MWYSULE674JWCAA5MPL3UX"
+  },
+  "line_items": [
+    {
+      "description": "1000 Men's T-shirts",
+      "quantity": 1000,
+      "unit_price_usd": 1,
+      "total_usd": 1000
+    }
+  ],
+  "total_usd": 1000,
+  "total_xlm": "2000.0000000",
+  "xlm_rate": 0.5,
+  "delivery_date": "2025-11-30",
+  "requirements": [
+    "non synthetic dye",
+    "cultural heritage design",
+    "south indian design"
+  ],
+  "status": "issued",
+  "signature_buyer": "KsYJHN9A26AXhcuJXv0LHs27dWv7r0HL/8GLGExP4UU=",
+  "signature_seller": "uMfJ/MNMZe0nOcSzwbiFiO3y5Tgo2IxATEPPqXhQXdA="
+}

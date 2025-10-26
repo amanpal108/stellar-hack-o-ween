@@ -1,0 +1,28 @@
+{
+  "ci_id": "CI-1761489846483",
+  "po_id": "PO-1761489838315",
+  "created_at": "2025-10-26T14:44:06.483Z",
+  "seller": {
+    "name": "Jupiter Knitting",
+    "lei": "3358004DXAMRWRUIYJ05",
+    "account": "GB6A32NHIOC64FTL3I34QOFFNULNX3V4KHUPIPKKMKLTUCKZLRLABULB"
+  },
+  "buyer": {
+    "name": "Tommy Hilfiger (Buyer)",
+    "lei": "54930012QJWZMYHNJW95",
+    "account": "GAV3SSAWNGLPYRAPP4GBBTXICUFWXDGO332FRDX2F4LIOUH634OWCLBE"
+  },
+  "line_items": [
+    {
+      "description": "120 Men's T-shirts",
+      "quantity": 120,
+      "unit_price_usd": 2,
+      "total_usd": 240
+    }
+  ],
+  "total_usd": 240,
+  "total_xlm": "480.0000000",
+  "payment_terms": "Net 30",
+  "status": "issued",
+  "signature_seller": "MjtgBhbIxNPjwRSkZx4mxd+rrOK0PF4hTnbGOpXRk9o="
+}

@@ -1,5 +1,5 @@
 {
-  "name": "stellar-trade-flow-mvp",
+  "name": "stellar-integra-mvp",
   "version": "1.0.0",
   "description": "Agent-driven buyer-seller trade flow with Stellar testnet escrow settlement",
   "private": true,
@@ -17,6 +17,9 @@
     "start:dvp": "node services/dvp-agent/index.js",
     "start:payment": "node services/payment-agent/index.js",
     "start:all": "concurrently \"npm run start:buyer\" \"npm run start:search\" \"npm run start:validation\" \"npm run start:po\" \"npm run start:fulfillment\" \"npm run start:dvp\" \"npm run start:payment\"",
+    "start:keri": "bash start-all-services.sh",
+    "setup:keri": "bash scripts/setup-keri-network.sh",
+    "stop:all": "bash scripts/kill_services.sh",
     "client": "cd client && npm start",
     "demo": "node scripts/run_demo_e2e.js",
     "test": "jest",

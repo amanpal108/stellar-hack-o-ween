@@ -1,6 +1,23 @@
 #!/usr/bin/env node
 
 /**
+ * ⚠️  DEPRECATED - This script is no longer needed!
+ * 
+ * The application now uses the Passkey Login system which automatically
+ * creates and funds all wallets through the UI in ~15 seconds.
+ * 
+ * To use the new system:
+ * 1. Start the app: npm run start:all && cd client && npm start
+ * 2. Click "Setup Account with Biometric" in the UI
+ * 3. All wallets are created and funded automatically!
+ * 
+ * See PASSKEY_LOGIN_GUIDE.md for more details.
+ * 
+ * This script is kept for reference only.
+ * 
+ * ---
+ * 
+ * OLD FUNCTIONALITY (still works if needed):
  * Creates test Stellar accounts for the demo
  * Generates keypairs for: buyer, seller (Jupiter Knitting), escrow
  */
@@ -20,13 +37,13 @@ const escrowKeypair = StellarSdk.Keypair.random();
 const accounts = {
   buyer: {
     name: 'Tommy Hilfiger (Buyer)',
-    lei: '5493001KJTIIGC8Y1R12',
+    lei: '54930012QJWZMYHNJW95',
     public: buyerKeypair.publicKey(),
     secret: buyerKeypair.secret()
   },
   seller: {
     name: 'Jupiter Knitting (Seller)',
-    lei: '5493001XJUPITER0001',
+    lei: '3358004DXAMRWRUIYJ05',
     public: sellerKeypair.publicKey(),
     secret: sellerKeypair.secret()
   },

@@ -1,7 +1,7 @@
 .agent-network-graph {
   position: relative;
   width: 100%;
-  height: 450px;
+  height: 500px;
   background: #1e293b;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
@@ -344,7 +344,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .agent-network-graph {
-    height: 400px;
+    height: 450px;
   }
   
   .node-circle {

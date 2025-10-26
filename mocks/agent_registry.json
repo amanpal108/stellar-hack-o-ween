@@ -1,8 +1,24 @@
 [
   {
+    "agentID": "agent:buyer-001",
+    "name": "Tommy Hilfiger Europe B.V.",
+    "lei": "54930012QJWZMYHNJW95",
+    "stellar_account": "GAPHCDOZXBO2R7EFZZXBFA55I46OTXGRMPVDCTTLUYUV35MN7Z5JFZIO",
+    "description": "International fashion brand seeking premium textile suppliers for global retail operations",
+    "keywords": ["fashion", "retail", "international", "premium", "textile", "buyer"],
+    "capabilities": {
+      "min_quantity": 10000,
+      "max_quantity": 1000000,
+      "lead_time_days": 60,
+      "specialties": ["international sourcing", "quality assurance", "bulk purchasing", "global distribution"]
+    },
+    "endpoint": "http://localhost:3001",
+    "type": "buyer"
+  },
+  {
     "agentID": "agent:jn-001",
     "name": "Jupiter Knitting",
-    "lei": "5493001XJUPITER0001",
+    "lei": "3358004DXAMRWRUIYJ05",
     "stellar_account": "GBPFMDZ5VNL56YNMXOQ35RUFRS3S6LZN66SB2OYOQXHK3X46UGTBJBBP",
     "description": "vLEI verified textile seller that can fulfill South Indian cultural heritage designs with Non synthetic natural dyes within 30 days",
     "keywords": ["textile", "t-shirts", "south indian", "cultural heritage", "non synthetic dye", "natural dyes", "cotton"],
@@ -12,37 +28,40 @@
       "lead_time_days": 30,
       "specialties": ["cultural designs", "natural dyes", "bulk orders"]
     },
-    "endpoint": "http://localhost:3004"
+    "endpoint": "http://localhost:3004",
+    "type": "seller"
   },
   {
-    "agentID": "agent:gt-002",
-    "name": "Gujarat Textiles",
-    "lei": "5493001XGUJARAT0002",
+    "agentID": "agent:rmkv-002",
+    "name": "RMKV SILKS PRIVATE LIMITED",
+    "lei": "335800MY8BXDZWV9C327",
     "stellar_account": "GBPFMDZ5VNL56YNMXOQ35RUFRS3S6LZN66SB2OYOQXHK3X46UGTBJBBP",
-    "description": "Large scale textile manufacturer specializing in traditional Indian designs with eco-friendly production",
-    "keywords": ["textile", "traditional", "indian designs", "eco-friendly", "bulk production"],
+    "description": "Premium silk manufacturer specializing in traditional South Indian silk sarees and textiles with authentic handloom techniques",
+    "keywords": ["silk", "sarees", "handloom", "traditional", "south indian", "premium", "textile"],
     "capabilities": {
-      "min_quantity": 50000,
-      "max_quantity": 1000000,
+      "min_quantity": 1000,
+      "max_quantity": 100000,
       "lead_time_days": 45,
-      "specialties": ["traditional designs", "eco-friendly", "large scale"]
+      "specialties": ["silk manufacturing", "handloom", "traditional designs", "premium quality"]
     },
-    "endpoint": "http://localhost:3004"
+    "endpoint": "http://localhost:3004",
+    "type": "seller"
   },
   {
-    "agentID": "agent:mb-003",
-    "name": "Mumbai Basics",
-    "lei": "5493001XMUMBAI00003",
+    "agentID": "agent:spa-003",
+    "name": "SREE PALANI ANDAVAR AGROS PRIVATE LIMITED",
+    "lei": "894500Q32QG6KKGMMI95",
     "stellar_account": "GBPFMDZ5VNL56YNMXOQ35RUFRS3S6LZN66SB2OYOQXHK3X46UGTBJBBP",
-    "description": "Budget textile supplier for basic apparel with standard synthetic and cotton options",
-    "keywords": ["textile", "basic", "cotton", "synthetic", "budget", "apparel"],
+    "description": "Agricultural and textile company specializing in organic cotton and natural fiber production with sustainable farming practices",
+    "keywords": ["organic cotton", "natural fibers", "agricultural", "sustainable", "textile", "eco-friendly"],
     "capabilities": {
       "min_quantity": 5000,
-      "max_quantity": 200000,
-      "lead_time_days": 20,
-      "specialties": ["budget pricing", "quick turnaround", "basic designs"]
+      "max_quantity": 500000,
+      "lead_time_days": 60,
+      "specialties": ["organic cotton", "sustainable farming", "natural fibers", "eco-friendly production"]
     },
-    "endpoint": "http://localhost:3004"
+    "endpoint": "http://localhost:3004",
+    "type": "seller"
   }
 ]
 

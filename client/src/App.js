@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './design-system.css';
 import './App.css';
+import './typography.css';
 import AgentVisualizer from './AgentVisualizer';
 import AgentNetworkGraph from './AgentNetworkGraph';
+import LoginScreen from './LoginScreen';
+import MarketplaceTrades from './MarketplaceTrades';
+import passkeyService from './services/PasskeyService';
 
 const SERVICES = {
   buyer: 'http://localhost:3001',
@@ -16,29 +21,9 @@ const SERVICES = {
 
 const DEFAULT_PROMPT = "Looking for 100,000 Men's T-shirts with South Indian Cultural Heritage Design made from Non Synthetic dye. Offer: 9 USD per t-shirt. Delivery: by 2025-11-30.";
 
-// Demo credentials - Using REAL Stellar Testnet accounts
-// These were generated and funded via scripts/create_test_accounts.js and scripts/fund_escrow.js
-const DEMO_ACCOUNTS = {
-  buyer: {
-    name: "Tommy Hilfiger",
-    lei: "5493001KJTIIGC8Y1R12",
-    public: "GBVEGEGHFCGQ5FAJZ72ROXQDP7IGSXJNS7FUJ7Y25CJ7JFBUKFUMHRYP",
-    secret: "SBWYF5JWAOKS752NH2VU4K2NXMZJGFOD3FS34JVECNDZQYEWWWWE4FUV"
-  },
-  seller: {
-    name: "Jupiter Knitting",
-    lei: "5493001XJUPITER0001",
-    public: "GBPFMDZ5VNL56YNMXOQ35RUFRS3S6LZN66SB2OYOQXHK3X46UGTBJBBP",
-    secret: "SA3RAY6RIK7X6WX6ORPWQF62LNJ3HLYYTKA3UYEXYTQW47J6KYFUWP4K"
-  },
-  escrow: {
-    name: "Marketplace Escrow",
-    public: "GB27XHTEUUQRJZQP5TIVMP6SOW7VSVYCNZD5OYD3NO2U2UL6VV3CW245",
-    secret: "SC54WRDKCEOHY5FWEAHTUO63XXBKIT3OPYIFD3OVURHU6KTJHSHHFTLK"
-  }
-};
-
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [accounts, setAccounts] = useState(null);
   const [prompt, setPrompt] = useState(DEFAULT_PROMPT);
   const [loading, setLoading] = useState(false);
   const [currentStage, setCurrentStage] = useState(null);
@@ -48,7 +33,176 @@ function App() {
   const [error, setError] = useState(null);
   const [viewMode, setViewMode] = useState('flow'); // 'flow' or 'network'
   const [communications, setCommunications] = useState([]);
-  const [accounts] = useState(DEMO_ACCOUNTS); // Using demo accounts
+  const [activeTab, setActiveTab] = useState('trade'); // 'trade' or 'marketplace'
+  const [savedTrades, setSavedTrades] = useState([]);
+  const [walletBalance, setWalletBalance] = useState('0');
+
+  // Load saved trades and authentication from localStorage on mount
+  useEffect(() => {
+    // Load trades
+    const storedTrades = localStorage.getItem('stellarTrades');
+    if (storedTrades) {
+      try {
+        setSavedTrades(JSON.parse(storedTrades));
+      } catch (e) {
+        console.error('Failed to load trades:', e);
+      }
+    }
+
+
+    // Load authentication state
+    const storedAuth = localStorage.getItem('stellarAuth');
+    if (storedAuth) {
+      try {
+        const authData = JSON.parse(storedAuth);
+        setAccounts(authData.accounts);
+        setIsAuthenticated(true);
+        console.log('✅ Restored session from localStorage');
+      } catch (e) {
+        console.error('Failed to restore session:', e);
+      }
+    }
+  }, []);
+
+  // Save trades to localStorage whenever they change
+  useEffect(() => {
+    if (savedTrades.length > 0) {
+      localStorage.setItem('stellarTrades', JSON.stringify(savedTrades));
+    }
+  }, [savedTrades]);
+
+  // Save authentication state to localStorage
+  useEffect(() => {
+    if (isAuthenticated && accounts) {
+      localStorage.setItem('stellarAuth', JSON.stringify({ accounts }));
+    } else {
+      localStorage.removeItem('stellarAuth');
+    }
+  }, [isAuthenticated, accounts]);
+
+  // Fetch wallet balance when accounts are available
+  useEffect(() => {
+    const fetchWalletBalance = async () => {
+      console.log('🔄 Fetching wallet balance...', { 
+        hasAccounts: !!accounts, 
+        hasBuyer: !!accounts?.buyer?.public, 
+        hasPasskeyService: !!passkeyService 
+      });
+      
+      if (accounts?.buyer?.public && passkeyService) {
+        try {
+          const balances = await passkeyService.getBalances();
+          console.log('💰 Balances fetched:', balances);
+          setWalletBalance(balances.buyer || '0');
+        } catch (error) {
+          console.error('❌ Error fetching wallet balance:', error);
+          setWalletBalance('0');
+        }
+      } else {
+        console.log('⚠️ Missing requirements for balance fetch:', {
+          accounts: !!accounts,
+          buyerPublic: !!accounts?.buyer?.public,
+          passkeyService: !!passkeyService
+        });
+      }
+    };
+
+    fetchWalletBalance();
+  }, [accounts, passkeyService]);
+
+  const handleLoginSuccess = (createdAccounts) => {
+    console.log('✅ Login successful! Accounts created:', createdAccounts);
+    setAccounts(createdAccounts);
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setAccounts(null);
+    setTimeline([]);
+    setTransactions([]);
+    setSeller(null);
+    setError(null);
+    setCommunications([]);
+    setActiveTab('trade');
+    setWalletBalance('0');
+    localStorage.removeItem('stellarAuth');
+    console.log('👋 Logged out - session cleared');
+  };
+
+  const refreshWalletBalance = async () => {
+    if (accounts?.buyer?.public && passkeyService) {
+      try {
+        console.log('🔄 Manually refreshing wallet balance...');
+        const balances = await passkeyService.getBalances();
+        console.log('💰 Refreshed balances:', balances);
+        setWalletBalance(balances.buyer || '0');
+      } catch (error) {
+        console.error('❌ Error refreshing wallet balance:', error);
+        setWalletBalance('0');
+      }
+    }
+  };
+
+
+  const saveTrade = (tradeData) => {
+    const newTrade = {
+      id: Date.now(),
+      timestamp: new Date().toISOString(),
+      ...tradeData
+    };
+    setSavedTrades(prev => [newTrade, ...prev]);
+    console.log('💾 Trade saved to marketplace:', newTrade.id);
+    return newTrade.id;
+  };
+
+  const updateTrade = (tradeId, updates) => {
+    console.log('🔄 updateTrade called for:', tradeId, 'with updates:', updates);
+    
+    setSavedTrades(prev => {
+      const tradeIndex = prev.findIndex(t => t.id === tradeId);
+      
+      if (tradeIndex === -1) {
+        console.warn('⚠️ Trade not found:', tradeId);
+        return prev;
+      }
+      
+      const trade = prev[tradeIndex];
+      
+      // Merge documents and transactions properly
+      const mergedTrade = {
+        ...trade,
+        ...updates,
+        documents: {
+          ...(trade.documents || {}),
+          ...(updates.documents || {})
+        },
+        transactions: updates.transactions || trade.transactions || [],
+        timeline: updates.timeline || trade.timeline || [],
+        lastUpdated: new Date().toISOString()
+      };
+      
+      console.log('✅ Trade merged:', {
+        id: tradeId,
+        oldStatus: trade.status,
+        newStatus: mergedTrade.status,
+        oldStage: trade.currentStage,
+        newStage: mergedTrade.currentStage,
+        documents: mergedTrade.documents,
+        transactionCount: mergedTrade.transactions?.length
+      });
+      
+      const updated = [
+        ...prev.slice(0, tradeIndex),
+        mergedTrade,
+        ...prev.slice(tradeIndex + 1)
+      ];
+      
+      // Immediately save to localStorage for real-time sync
+      localStorage.setItem('stellarTrades', JSON.stringify(updated));
+      return updated;
+    });
+  };
 
   const addTimelineEvent = (stage, status, details = '') => {
     setTimeline(prev => [...prev, {
@@ -100,6 +254,9 @@ function App() {
     setTransactions([]);
     setSeller(null);
     setCommunications([]);
+
+    // Use local variable for trade ID (not state - avoids async issues)
+    let activeTradeId = null;
 
     // Helper function to add delay for visualization
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -164,8 +321,8 @@ function App() {
       
       const validationRes = await axios.post(`${SERVICES.validation}/validate`, validationPayload);
       logResponse('Validation Agent', 'Buyer Agent', 200, 'Both parties verified', {
-        buyer: validationRes.data.buyer.entity_name,
-        seller: validationRes.data.seller.entity_name,
+        buyer: validationRes.data.buyer.entityName || validationRes.data.buyer.entity_name,
+        seller: validationRes.data.seller.entityName || validationRes.data.seller.entity_name,
         valid: validationRes.data.valid
       });
       await delay(1000);
@@ -237,6 +394,41 @@ function App() {
       addTimelineEvent('po_generation', 'completed', `PO: ${poRes.data.po_id}`);
       addTransaction('PO', poRes.data.po_tx_id, poRes.data.stellar_explorer_url);
 
+      // 💾 CREATE TRADE IN MARKETPLACE (appears immediately after PO)
+      activeTradeId = saveTrade({
+        status: 'in-progress',
+        currentStage: 'PO Generated',
+        buyer: {
+          name: accounts.buyer.name,
+          lei: accounts.buyer.lei,
+          account: accounts.buyer.public
+        },
+        seller: {
+          name: topSeller.name,
+          lei: topSeller.lei,
+          account: accounts.seller.public
+        },
+        product: startRes.data.parsed_request.product,
+        quantity: startRes.data.parsed_request.quantity,
+        unitPrice: startRes.data.parsed_request.unit_price_usd,
+        totalUSD: poRes.data.po.total_usd,
+        totalXLM: poRes.data.po.total_xlm,
+        deliveryDate: startRes.data.parsed_request.delivery_date,
+        documents: {
+          po: poRes.data.po_id,
+          ci: null,
+          wr: null
+        },
+        transactions: [{
+          type: 'PO',
+          txId: poRes.data.po_tx_id,
+          url: poRes.data.stellar_explorer_url,
+          timestamp: new Date().toISOString()
+        }],
+        timeline: [...timeline]
+      });
+      console.log('💾 Trade created with ID:', activeTradeId);
+
       // Step 5: Fulfillment
       setCurrentStage('Processing Fulfillment...');
       addTimelineEvent('fulfillment', 'in-progress');
@@ -294,6 +486,27 @@ function App() {
       addTransaction('CI', fulfillmentRes.data.ci_tx_id, fulfillmentRes.data.ci_explorer_url);
       addTransaction('WR', fulfillmentRes.data.wr_tx_id, fulfillmentRes.data.wr_explorer_url);
 
+      // 🔄 UPDATE TRADE: Fulfillment complete
+      if (activeTradeId) {
+        const allTransactions = [
+          { type: 'PO', txId: poRes.data.po_tx_id, url: poRes.data.stellar_explorer_url, timestamp: new Date().toISOString() },
+          { type: 'CI', txId: fulfillmentRes.data.ci_tx_id, url: fulfillmentRes.data.ci_explorer_url, timestamp: new Date().toISOString() },
+          { type: 'WR', txId: fulfillmentRes.data.wr_tx_id, url: fulfillmentRes.data.wr_explorer_url, timestamp: new Date().toISOString() }
+        ];
+        
+        updateTrade(activeTradeId, {
+          status: 'in-progress',
+          currentStage: 'Fulfillment Complete',
+          documents: {
+            po: poRes.data.po_id,
+            ci: fulfillmentRes.data.ci_id,
+            wr: fulfillmentRes.data.wr_id
+          },
+          transactions: allTransactions,
+          timeline: [...timeline]
+        });
+      }
+
       // Step 6: DvP Verification
       setCurrentStage('Verifying Documents...');
       addTimelineEvent('dvp_verification', 'in-progress');
@@ -325,6 +538,16 @@ function App() {
       }
 
       addTimelineEvent('dvp_verification', 'completed', dvpRes.data.summary);
+
+      // 🔄 UPDATE TRADE: DvP verification complete
+      if (activeTradeId) {
+        updateTrade(activeTradeId, {
+          status: 'in-progress',
+          currentStage: 'DvP Verified',
+          dvpVerified: true,
+          timeline: [...timeline]
+        });
+      }
 
       // Step 7: Payment
       setCurrentStage('Releasing Payment...');
@@ -378,22 +601,145 @@ function App() {
 
       setCurrentStage('✅ Trade Complete!');
 
+      // 🔄 UPDATE TRADE: Mark as completed with ALL transactions
+      if (activeTradeId) {
+        const allFinalTransactions = [
+          { type: 'PO', txId: poRes.data.po_tx_id, url: poRes.data.stellar_explorer_url, timestamp: new Date().toISOString() },
+          { type: 'CI', txId: fulfillmentRes.data.ci_tx_id, url: fulfillmentRes.data.ci_explorer_url, timestamp: new Date().toISOString() },
+          { type: 'WR', txId: fulfillmentRes.data.wr_tx_id, url: fulfillmentRes.data.wr_explorer_url, timestamp: new Date().toISOString() },
+          { type: 'Payment', txId: paymentRes.data.payment_tx_id, url: paymentRes.data.stellar_explorer_url, timestamp: new Date().toISOString() }
+        ];
+        
+        updateTrade(activeTradeId, {
+          status: 'completed',
+          currentStage: 'Completed',
+          documents: {
+            po: poRes.data.po_id,
+            ci: fulfillmentRes.data.ci_id,
+            wr: fulfillmentRes.data.wr_id
+          },
+          transactions: allFinalTransactions,
+          timeline: [...timeline],
+          completedAt: new Date().toISOString()
+        });
+      }
+
     } catch (err) {
       setError(err.message || 'An error occurred');
       addTimelineEvent('error', 'failed', err.message);
       setCurrentStage('❌ Trade Failed');
+      
+      // Capture whatever transactions were completed before failure
+      const completedTransactions = transactions.map(tx => ({
+        type: tx.type,
+        txId: tx.txId,
+        url: tx.url,
+        timestamp: new Date().toISOString()
+      }));
+      
+      console.log('💾 Saving failed trade with', completedTransactions.length, 'completed transactions');
+      
+      // 🔄 UPDATE TRADE: Mark as failed (or create if PO wasn't reached)
+      if (activeTradeId) {
+        updateTrade(activeTradeId, {
+          status: 'failed',
+          currentStage: 'Failed',
+          error: err.message,
+          timeline: [...timeline],
+          transactions: completedTransactions, // Use actual completed transactions
+          failedAt: new Date().toISOString()
+        });
+      } else {
+        // Trade failed before PO was created
+        saveTrade({
+          status: 'failed',
+          currentStage: 'Failed',
+          buyer: {
+            name: accounts.buyer.name,
+            lei: accounts.buyer.lei,
+            account: accounts.buyer.public
+          },
+          seller: seller ? {
+            name: seller.name,
+            lei: seller.lei,
+            account: accounts.seller.public
+          } : null,
+          product: prompt.substring(0, 100),
+          quantity: null,
+          unitPrice: null,
+          totalUSD: null,
+          totalXLM: null,
+          error: err.message,
+          timeline: [...timeline],
+          transactions: completedTransactions
+        });
+      }
     } finally {
       setLoading(false);
     }
   };
 
+  // Show login screen if not authenticated
+  if (!isAuthenticated) {
+    return <LoginScreen onLoginSuccess={handleLoginSuccess} />;
+  }
+
   return (
     <div className="App">
       <header className="header">
-        <h1>🌟 Stellar Trade Flow</h1>
+        <div className="header-content">
+          <div className="header-title">
+            <h1>🌟 Stellar Integra</h1>
         <p>Agent-driven buyer→seller trade with Stellar Testnet escrow settlement</p>
+          </div>
+          <div className="header-actions">
+            <div className="account-info">
+              <div className="account-badge">
+                🔐 <strong>{accounts.buyer.name}</strong>
+              </div>
+              <div className="account-address">{accounts.buyer.public.substring(0, 8)}...</div>
+              <div className="wallet-balance">
+                💰 {parseFloat(walletBalance).toLocaleString()} XLM
+                <button 
+                  className="refresh-balance-btn" 
+                  onClick={refreshWalletBalance}
+                  title="Refresh Balance"
+                >
+                  🔄
+                </button>
+              </div>
+            </div>
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        </div>
       </header>
 
+      {/* Tab Navigation */}
+      <div className="tabs-navigation">
+        <button 
+          className={`tab-button ${activeTab === 'trade' ? 'active' : ''}`}
+          onClick={() => setActiveTab('trade')}
+        >
+          <span className="tab-icon">🚀</span>
+          <span>Trade Flow</span>
+        </button>
+        <button 
+          className={`tab-button ${activeTab === 'marketplace' ? 'active' : ''}`}
+          onClick={() => setActiveTab('marketplace')}
+        >
+          <span className="tab-icon">📊</span>
+          <span>Marketplace</span>
+          {savedTrades.length > 0 && (
+            <span className="trades-badge">{savedTrades.length}</span>
+          )}
+        </button>
+      </div>
+
+      {activeTab === 'marketplace' ? (
+        <MarketplaceTrades trades={savedTrades} />
+      ) : (
       <div className="container">
         {/* Agent Visualization */}
         {(currentStage || timeline.length > 0) && (
@@ -495,11 +841,30 @@ function App() {
           <div className="card timeline-card">
             <h2>📊 Trade Timeline</h2>
             <div className="timeline">
-              {timeline.map((event, idx) => (
+              {timeline.map((event, idx) => {
+                const getStageIcon = (stage) => {
+                  const stageLower = stage.toLowerCase();
+                  if (stageLower.includes('initiat')) return '🤵';
+                  if (stageLower.includes('search')) return '🔍';
+                  if (stageLower.includes('validat')) return '🔐';
+                  if (stageLower.includes('po_gen') || stageLower.includes('purchase order')) return '📝';
+                  if (stageLower.includes('fulfillment')) return '📦';
+                  if (stageLower.includes('dvp') || stageLower.includes('verifying')) return '⚖️';
+                  if (stageLower.includes('payment') || stageLower.includes('releasing')) return '💰';
+                  return '📋';
+                };
+
+                const getStatusIcon = (status) => {
+                  if (status === 'completed') return '✅';
+                  if (status === 'in-progress') return '⏳';
+                  return '❌';
+                };
+
+                return (
                 <div key={idx} className={`timeline-event ${event.status}`}>
                   <div className="timeline-marker">
-                    {event.status === 'completed' ? '✅' : 
-                     event.status === 'in-progress' ? '⏳' : '❌'}
+                      <span className="timeline-stage-icon">{getStageIcon(event.stage)}</span>
+                      <span className="timeline-status-icon">{getStatusIcon(event.status)}</span>
                   </div>
                   <div className="timeline-content">
                     <div className="timeline-stage">{event.stage}</div>
@@ -507,7 +872,8 @@ function App() {
                     <div className="timeline-time">{event.timestamp}</div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -533,6 +899,7 @@ function App() {
           </div>
         )}
       </div>
+      )}
     </div>
   );
 }

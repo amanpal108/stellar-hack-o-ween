@@ -1,0 +1,23 @@
+{
+  "wr_id": "WR-1761489341530",
+  "po_id": "PO-1761489332373",
+  "ci_id": "CI-1761489341528",
+  "created_at": "2025-10-26T14:35:41.530Z",
+  "warehouse": {
+    "name": "Chennai Port Warehouse",
+    "location": "Chennai, India",
+    "license": "WH-TN-2024-001"
+  },
+  "goods": [
+    {
+      "description": "1200 Men's T-shirts",
+      "quantity": 1200,
+      "unit": "pieces",
+      "condition": "new",
+      "packaging": "cartons"
+    }
+  ],
+  "received_date": "2025-10-26T14:35:41.530Z",
+  "status": "stored",
+  "signature_warehouse": "lXkTLdBPFD2sElo3sIPm81AHiIJLuEu0DQM2LCuSZf4="
+}

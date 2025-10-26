@@ -1,0 +1,7 @@
+{
+  "gleifEndpoint": "https://api.gleif.org/api/v1/lei-records",
+  "verificationMethod": "api",
+  "cacheTimeout": 3600000,
+  "retryAttempts": 3,
+  "timeout": 10000
+}
